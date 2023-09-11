@@ -1,0 +1,3 @@
+PROJECT(PInvoke)
+
+ADD_SUBDIRECTORY(src)

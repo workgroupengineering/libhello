@@ -86,6 +86,6 @@ jobs:
         name: Build # optional, default is artifact
         # A file, directory or wildcard pattern that describes what to upload
         path: |
-          ${{ steps.strings.outputs.build-output-dir }}/**/*freetype.*
+          ${{ steps.strings.outputs.build-output-dir }}/_CPack_Packages/*
         # The desired behavior if no files are found using the provided path.
         

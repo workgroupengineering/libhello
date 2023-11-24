@@ -23,7 +23,6 @@ jobs:
         build_type: [Release]
         c_compiler: [clang, cl]
         shared_libs: [true,false]
-        platform: [arm64,x64,x86]
         include:
           - os: windows-latest
             c_compiler: cl

@@ -74,10 +74,11 @@ jobs:
         -DBUILD_SHARED_LIBS=${{ matrix.shared_libs }}
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}        
         -S ${{ github.workspace }}
+        --preset arm64ec
         
     - name: Build
       # Build your program with the given configuration. Note that --config is needed because the default Windows generator is a multi-config generator (Visual Studio generator).
-      run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }} --target package --preset arm64ec
+      run: cmake --build ${{ steps.strings.outputs.build-output-dir }} --config ${{ matrix.build_type }} --target package
     
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.3

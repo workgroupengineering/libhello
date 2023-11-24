@@ -73,7 +73,8 @@ jobs:
         -DCMAKE_CXX_COMPILER=${{ matrix.cpp_compiler }}
         -DCMAKE_C_COMPILER=${{ matrix.c_compiler }}
         -DBUILD_SHARED_LIBS=${{ matrix.shared_libs }}
-        -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}        
+        -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+        -A ${{ matrix.platform }}      
         -S ${{ github.workspace }}
         
     - name: Build

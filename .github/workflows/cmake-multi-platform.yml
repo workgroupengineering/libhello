@@ -58,8 +58,9 @@ jobs:
 
     - name: Clone FreeType
       run: |
-        git -n clone https://gitlab.freedesktop.org/freetype/freetype.git 
+        git clone https://gitlab.freedesktop.org/freetype/freetype.git  --no-checkout
         git fetch -t
+        cd freetype
         git checkout VER-2-13-2
 
     - name: Configure CMake

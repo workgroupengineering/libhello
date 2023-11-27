@@ -1,0 +1,23 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 8dbca01e6..77160d029 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -124,6 +124,10 @@ endif ()
+ include(CheckIncludeFile)
+ include(CMakeDependentOption)
+ 
++set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/bin/${CMAKE_GENERATOR_PLATFORM}/lib")
++set(CMAKE_LIBRARY_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/bin/${CMAKE_GENERATOR_PLATFORM}/lib")
++set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE "${CMAKE_BINARY_DIR}/bin/${CMAKE_GENERATOR_PLATFORM}/lib")
++
+ # CMAKE_TOOLCHAIN_FILE must be set before `project' is called, which
+ # configures the base build environment and references the toolchain file
+ if (APPLE)
+@@ -677,5 +681,6 @@ set(CPACK_COMPONENT_HEADERS_DESCRIPTION
+ set(CPACK_COMPONENT_HEADERS_DEPENDS libraries)
+ set(CPACK_COMPONENT_LIBRARIES_GROUP "Development")
+ set(CPACK_COMPONENT_HEADERS_GROUP "Development")
+-
++set(CPACK_PACKAGE_FILE_NAME "${CPACK_PACKAGE_NAME}-${CPACK_PACKAGE_VERSION}-${CPACK_SYSTEM_NAME}_${CMAKE_GENERATOR_PLATFORM}")
++set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY OFF)
+ include(CPack)

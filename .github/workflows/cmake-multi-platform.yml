@@ -95,5 +95,6 @@ jobs:
           ${{ steps.strings.outputs.build-output-dir }}/_CPack_Packages/*
           !${{ steps.strings.outputs.build-output-dir }}/_CPack_Packages/**/*.tar.gz
           !${{ steps.strings.outputs.build-output-dir }}/_CPack_Packages/**/*.zip
+          |${{ steps.strings.outputs.build-output-dir }}/freetype/CMakeLists.txt
         # The desired behavior if no files are found using the provided path.
         

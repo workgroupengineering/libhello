@@ -57,7 +57,7 @@ jobs:
       if: ${{ matrix.os == 'windows-latest' }}
       with:
           pkgs: ZLIB
-          triplet: ${{ matrix.platform }}-windows-release
+          triplet: ${{ matrix.platform }}-windows
           cache-key: ${{ matrix.os }}
           revision: master
           token: ${{ github.token }}

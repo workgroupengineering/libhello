@@ -13,7 +13,7 @@ runs:
 
     - name: Download Repository
       shell: bash
-      run: git clone --depth 1 --branch ${{ inputs.version }}
+      run: git clone https://github.com/Microsoft/vcpkg.git --depth 1 --branch ${{ inputs.version }}
 
     - name: Install Windows
       if: runner.os == 'Windows'

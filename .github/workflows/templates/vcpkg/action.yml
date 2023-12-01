@@ -12,15 +12,19 @@ runs:
   steps:
 
     - name: Download Repository
+      shell: bash
       run: git clone --depth 1 --branch ${{ inputs.version }}
 
     - name: Install Windows
       if: runner.os == 'Windows'
+      shell: cmd
       run: .\vcpkg\bootstrap-vcpkg.bat
 
     - name: 'Install ${{ runner.os }}'
       if: runner.os != 'Windows'
+      shell: bash
       run: ./vcpkg/bootstrap-vcpkg.sh
     
     - name: Integrate
+      shell: bash
       run: vcpkg integrate install

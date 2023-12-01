@@ -17,7 +17,11 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
         build_type: [Release]
         ark: [x86, x64, arm64]
-        
+        exclude:
+          - os: macos-latest
+            ark: x86
+            build_type: Release 
+
     steps:
     - uses: actions/checkout@v3
     

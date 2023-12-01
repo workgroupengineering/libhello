@@ -38,10 +38,10 @@ jobs:
         version: 2023.11.20
 
     - name: 'Install freetype Package'
-      run: .\vcpkg\vcpkg install freetype:${{ matrix.ark }}-${{ runner.os }}
+      run: vcpkg install freetype:${{ matrix.ark }}-${{ runner.os }}
 
     - name: 'Export freetype Package'
-      run: .\vcpkg\vcpkg export freetype:${{ matrix.ark }}-${{ runner.os }} --raw --output-dir=${{ steps.strings.outputs.build-output-dir }} 
+      run: vcpkg export freetype:${{ matrix.ark }}-${{ runner.os }} --raw --output-dir=${{ steps.strings.outputs.build-output-dir }} 
       
 
     - name: Upload a Build Artifact

@@ -42,7 +42,7 @@ jobs:
       run: |
         TOS="${{ runner.os }}"
         echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
-        echo "build-triplet=${{ matrix.ark }}-${TOS/macOS/osx}" >> "$GITHUB_OUTPUT"
+        echo "build-triplet=${{ matrix.ark }}-${TOS/macOS/osx}-${{ matrix.build_type }}" >> "$GITHUB_OUTPUT"
 
     - name: 'Install vcpkg'
       uses: "./.github/workflows/templates/vcpkg" #Just need to pass the path from action

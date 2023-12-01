@@ -5,7 +5,9 @@ name: Build
 on: [push]
 
 jobs:
-  build_freetype:  
+  build_freetype:
+    env:
+      VCPKG_DISABLE_METRICS: "1"
     runs-on: ${{ matrix.os }}
     name: 'Build freetype ${{ matrix.os }}'
     strategy:

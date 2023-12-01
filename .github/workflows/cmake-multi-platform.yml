@@ -21,13 +21,16 @@ jobs:
           - os: macos-latest
             ark: x86
             build_type: Release 
-
     steps:
     - uses: actions/checkout@v3
     
     - name: Get CMake
       uses: symbitic/install-cmake@master
       if: ${{ matrix.os == 'macos-latest' }}
+
+    - name: Install Arm64 Compiler
+      if: ${{ matrix.os == 'ubuntu-latest' }}
+      run: sudo apt-get install -qy binutils-aarch64-linux-gnu gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
       
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.

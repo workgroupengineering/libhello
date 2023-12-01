@@ -50,10 +50,10 @@ jobs:
         version: 2023.11.20
 
     - name: 'Install freetype Package'
-      run: vcpkg install freetype:${{ steps.strings.outputs.build-triplet }} --overlay-triplets='${{ github.workspace }}\.github\workflows\overlay_trypletes\'
+      run: vcpkg install freetype:${{ steps.strings.outputs.build-triplet }} --overlay-triplets='${{ github.workspace }}\.\overlay_trypletes\'
 
     - name: 'Export freetype Package'
-      run: vcpkg export freetype:${{ steps.strings.outputs.build-triplet }} --zip --output-dir=${{ steps.strings.outputs.build-output-dir }} --output=${{ runner.os }}_${{ matrix.ark }} --overlay-triplets='${{ github.workspace }}\.github\workflows\overlay_trypletes\'
+      run: vcpkg export freetype:${{ steps.strings.outputs.build-triplet }} --zip --output-dir=${{ steps.strings.outputs.build-output-dir }} --output=${{ runner.os }}_${{ matrix.ark }} --overlay-triplets='${{ github.workspace }}\.\overlay_trypletes\'
       
 
     - name: Upload a Build Artifact

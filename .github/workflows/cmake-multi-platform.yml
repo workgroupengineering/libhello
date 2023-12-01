@@ -39,7 +39,7 @@ jobs:
       run: .\vcpkg\vcpkg install freetype:${{ matrix.ark }}-${{ runner.os }}
 
     - name: 'Export freetype Package'
-      run: .\vcpkg\vcpkg export freetype:${{ matrix.ark }}-${{ runner.os }} --raw --output-dir=${{ steps.strings.outputs.build-output-dir }} --output=${{ runner.os }}_${{ matrix.ark }}
+      run: .\vcpkg\vcpkg export freetype:${{ matrix.ark }}-${{ runner.os }} --raw --output-dir=${{ steps.strings.outputs.build-output-dir }} 
       
 
     - name: Upload a Build Artifact

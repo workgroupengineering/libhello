@@ -2,11 +2,7 @@
 # See: https://github.com/actions/starter-workflows/blob/main/ci/cmake-single-platform.yml
 name: Build
 
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+on: [push]
 
 jobs:
   build_freetype:  
@@ -43,7 +39,7 @@ jobs:
       run: .\vcpkg\vcpkg install freetype:${{ matrix.ark }}-${{ runner.os }}
 
     - name: 'Export freetype Package'
-      run: .\vcpkg\vcpkg export freetype:${{ matrix.ark }}-${{ runner.os }} --zip --output-dir=${{ steps.strings.outputs.build-output-dir }} --output=freetype_${{ runner.os }}_${{ matrix.ark}}
+      run: .\vcpkg\vcpkg export freetype:${{ matrix.ark }}-${{ runner.os }} --raw --output-dir=${{ steps.strings.outputs.build-output-dir }} --output=${{ runner.os }}_${{ matrix.ark }}
       
 
     - name: Upload a Build Artifact

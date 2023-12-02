@@ -48,7 +48,9 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: 'vcpkg-buildlogs-${{ steps.strings.outputs.build-triplet }}'
-        path:  /usr/local/share/vcpkg/buildtrees/**/*.log
+        path: 
+           /usr/local/share/vcpkg/buildtrees/**/*.log
+           /usr/local/share/vcpkg/installed/vcpkg/issue_body.md
 
     - name: 'Export freetype Package'
       run: vcpkg export libpng:${{ steps.strings.outputs.build-triplet }} --zip --output-dir=${{ steps.strings.outputs.build-output-dir }} --overlay-triplets='${{ github.workspace }}/./overlay_trypletes/'     

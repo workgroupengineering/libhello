@@ -1,0 +1,30 @@
+name: 'Install vcpkg'
+description: 'Install vcpkg tools'
+
+# Were we can define the inputs that our action will accept
+inputs:
+    version: 
+        required: true
+
+runs:
+  using: "composite"  
+  # Defining the action steps(Just one step to be simple)
+  steps:
+
+    - name: Download Repository
+      shell: bash
+      run: git clone https://github.com/Microsoft/vcpkg.git --depth 1 --branch ${{ inputs.version }}
+
+    - name: Install Windows
+      if: runner.os == 'Windows'
+      shell: cmd
+      run: .\vcpkg\bootstrap-vcpkg.bat
+
+    - name: 'Install ${{ runner.os }}'
+      if: runner.os != 'Windows'
+      shell: bash
+      run: ./vcpkg/bootstrap-vcpkg.sh
+    
+    - name: Integrate
+      shell: bash
+      run: vcpkg integrate install

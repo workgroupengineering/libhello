@@ -15,8 +15,8 @@
     },
     {
       "name": "vcpkg-cmake-get-vars",
-      "host": false,
-      "platform": "arm"
+      "host": true,
+      "platform": "arm & android"
     },
     "zlib"
   ],

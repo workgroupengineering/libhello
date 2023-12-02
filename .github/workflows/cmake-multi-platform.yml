@@ -41,7 +41,7 @@ jobs:
         version: 2023.11.20
 
     - name: 'Install Package'
-      run: vcpkg install libpng:${{ steps.strings.outputs.build-triplet }} --overlay-triplets='${{ github.workspace }}/./overlay_trypletes/'
+      run: vcpkg install libpng:${{ steps.strings.outputs.build-triplet }} --overlay-triplets='${{ github.workspace }}/./overlay/trypletes/' --overlay-ports='${{ github.workspace }}/./overlay/ports/'
 
     - name: Upload vcpkg build logs
       if: always()

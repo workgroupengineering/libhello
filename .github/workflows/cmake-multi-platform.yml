@@ -14,6 +14,14 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
+    - uses: kenchan0130/actions-system-info@master
+      id: system-info
+
+    - uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-${{ steps.system-info.outputs.release }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: ${{ runner.os }}-${{ steps.system-info.outputs.release }}-node-
 
     - name: Install Arm64 Compiler
       run: sudo apt-get install -qy binutils-aarch64-linux-gnu gcc-aarch64-linux-gnu g++-aarch64-linux-gnu

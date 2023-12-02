@@ -20,8 +20,8 @@ jobs:
     - uses: actions/cache@v2
       with:
         path: ~/.npm
-        key: ${{ runner.os }}-${{ steps.system-info.outputs.release }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: ${{ runner.os }}-${{ steps.system-info.outputs.release }}-node-
+        key: ${{ runner.os }}-${{ steps.system-info.outputs.release }}-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: ${{ runner.os }}-${{ steps.system-info.outputs.release }}
 
     - name: Install Arm64 Compiler
       run: sudo apt-get install -qy binutils-aarch64-linux-gnu gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
@@ -53,7 +53,7 @@ jobs:
            /usr/local/share/vcpkg/installed/vcpkg/issue_body.md
 
     - name: 'Export freetype Package'
-      run: vcpkg export libpng:${{ steps.strings.outputs.build-triplet }} --zip --output-dir=${{ steps.strings.outputs.build-output-dir }} --overlay-triplets='${{ github.workspace }}/./overlay_trypletes/'     
+      run: vcpkg export libpng:${{ steps.strings.outputs.build-triplet }} --zip --output-dir=${{ steps.strings.outputs.build-output-dir }} --overlay-triplets='${{ github.workspace }}/./overlay/trypletes/' --overlay-ports='${{ github.workspace }}/./overlay/ports/'
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.3

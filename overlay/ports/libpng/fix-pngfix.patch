@@ -1,0 +1,12 @@
+diff --git a/contrib/tools/pngfix.c b/contrib/tools/pngfix.c
+index cdf3f1cb4..a7e9d502a 100644
+--- a/contrib/tools/pngfix.c
++++ b/contrib/tools/pngfix.c
+@@ -17,6 +17,7 @@
+ #include <limits.h>
+ #include <errno.h>
+ #include <assert.h>
++#include <math.h>
+ 
+ #define implies(x,y) assert(!(x) || (y))
+ 

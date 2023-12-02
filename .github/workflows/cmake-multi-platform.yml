@@ -33,7 +33,7 @@ jobs:
       run: |
         TOS="${{ runner.os }}"
         echo "build-output-dir=${{ github.workspace }}/build" >> "$GITHUB_OUTPUT"
-        echo "build-triplet=arm64-linux-shared" >> "$GITHUB_OUTPUT"
+        echo "build-triplet=arm64-linux" >> "$GITHUB_OUTPUT"
 
     - name: 'Install vcpkg'
       uses: "./.github/workflows/templates/vcpkg" #Just need to pass the path from action

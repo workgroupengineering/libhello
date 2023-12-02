@@ -48,7 +48,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: 'vcpkg-buildlogs-${{ steps.strings.outputs.build-triplet }}'
-        path: 
+        path: |
            /usr/local/share/vcpkg/buildtrees/**/*.log
            /usr/local/share/vcpkg/installed/vcpkg/issue_body.md
 

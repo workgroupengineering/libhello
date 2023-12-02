@@ -9,7 +9,7 @@ jobs:
     name: 'Build libpng arm64'
     env:
       VCPKG_DISABLE_METRICS: "1"
-      VCPKG_ROOT: '${{ github.workspace }}/vcpkg'
+#      VCPKG_ROOT: '${{ github.workspace }}/vcpkg'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3

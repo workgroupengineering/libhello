@@ -24,7 +24,7 @@ jobs:
         restore-keys: ${{ runner.os }}-${{ steps.system-info.outputs.release }}
 
     - name: Install Arm64 Compiler
-      run: sudo apt-get install -qy binutils-aarch64-linux-gnu gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
+      run: sudo apt-get install -qy binutils-aarch64-linux-gnu gcc-aarch64-linux-gnu g++-aarch64-linux-gnu nasm
       
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.

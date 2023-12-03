@@ -54,7 +54,7 @@ jobs:
         path: |
            /usr/local/share/vcpkg/buildtrees/**/*.log
            /usr/local/share/vcpkg/installed/vcpkg/issue_body.md
-           "${{ steps.strings.outputs.build-output-dir }}/ld.log"
+           ${{ steps.strings.outputs.build-output-dir }}/ld.log
 
     - name: 'Export freetype Package'
       run: vcpkg export libpng:${{ steps.strings.outputs.build-triplet }} --zip --output-dir=${{ steps.strings.outputs.build-output-dir }} --overlay-triplets='${{ github.workspace }}/./overlay/trypletes/' --overlay-ports='${{ github.workspace }}/./overlay/ports/'

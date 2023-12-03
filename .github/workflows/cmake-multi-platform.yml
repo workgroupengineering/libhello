@@ -24,7 +24,7 @@ jobs:
         restore-keys: ${{ runner.os }}-${{ steps.system-info.outputs.release }}
 
     - name: Install Arm64 Compiler
-      run: sudo apt-get install -qy binutils-aarch64-linux-gnu gcc-aarch64-linux-gnu g++-aarch64-linux-gnu nasm
+      run: sudo apt-get install -qy binutils-aarch64-linux-gnu gcc-aarch64-linux-gnu g++-aarch64-linux-gnu
       
     - name: Set reusable strings
       # Turn repeated input strings (such as the build output directory) into step outputs. These step outputs can be used throughout the workflow file.
@@ -41,7 +41,10 @@ jobs:
         version: 2023.11.20
 
     - name: 'Install Package'
-      run: vcpkg install ffmpeg:${{ steps.strings.outputs.build-triplet }} --overlay-triplets='${{ github.workspace }}/./overlay/trypletes/' --overlay-ports='${{ github.workspace }}/./overlay/ports/'
+      run: vcpkg install libpng:${{ steps.strings.outputs.build-triplet }} --overlay-triplets='${{ github.workspace }}/./overlay/trypletes/' --overlay-ports='${{ github.workspace }}/./overlay/ports/'
+      env:
+        LD_DEBUG: "all cat"
+        LD_DEBUG_OUTPUT: "${{ steps.strings.outputs.build-output-dir }}/ld.log"
 
     - name: Upload vcpkg build logs
       if: always()
@@ -51,9 +54,10 @@ jobs:
         path: |
            /usr/local/share/vcpkg/buildtrees/**/*.log
            /usr/local/share/vcpkg/installed/vcpkg/issue_body.md
+           "${{ steps.strings.outputs.build-output-dir }}/ld.log"
 
     - name: 'Export freetype Package'
-      run: vcpkg export ffmpeg:${{ steps.strings.outputs.build-triplet }} --zip --output-dir=${{ steps.strings.outputs.build-output-dir }} --overlay-triplets='${{ github.workspace }}/./overlay/trypletes/' --overlay-ports='${{ github.workspace }}/./overlay/ports/'
+      run: vcpkg export libpng:${{ steps.strings.outputs.build-triplet }} --zip --output-dir=${{ steps.strings.outputs.build-output-dir }} --overlay-triplets='${{ github.workspace }}/./overlay/trypletes/' --overlay-ports='${{ github.workspace }}/./overlay/ports/'
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.3

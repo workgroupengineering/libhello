@@ -57,10 +57,11 @@ jobs:
       run: vcpkg export freetype:${{ steps.strings.outputs.build-triplet }} --raw --output-dir=/tmp/builds  --overlay-triplets='${{ github.workspace }}/./overlay/trypletes/' --overlay-ports='${{ github.workspace }}/./overlay/ports/'
 
     - name: 'Copy files'
+      shell: bash
       run: |
         mkdir -p '${{ steps.strings.outputs.build-output-dir }}/${{ steps.strings.outputs.build-triplet }}/lib'
-        cp '/tmp/builds/installed/${{ steps.strings.outputs.build-triplet }}/lib'  '${{ steps.strings.outputs.build-output-dir }}/${{ steps.strings.outputs.build-triplet }}/lib'
-        cp '/tmp/builds/installed/${{ steps.strings.outputs.build-triplet }}/bin'  '${{ steps.strings.outputs.build-output-dir }}/${{ steps.strings.outputs.build-triplet }}/lib'
+        cp '/tmp/builds/**/installed/${{ steps.strings.outputs.build-triplet }}/lib'  '${{ steps.strings.outputs.build-output-dir }}/${{ steps.strings.outputs.build-triplet }}/lib'
+        cp '/tmp/builds/**/installed/${{ steps.strings.outputs.build-triplet }}/bin'  '${{ steps.strings.outputs.build-output-dir }}/${{ steps.strings.outputs.build-triplet }}/lib'
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.3

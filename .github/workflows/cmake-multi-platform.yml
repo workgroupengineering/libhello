@@ -61,10 +61,10 @@ jobs:
       run: ls -R ${{ runner.temp }}/builds/freetype/*
 
     - name: 'Copy files'
-      shell: bash
-      run: |
-        mkdir -p ${{ steps.strings.outputs.build-output-dir }}/${{ steps.strings.outputs.build-triplet }}/lib
-        cp ${{ runner.temp }}/builds/freetype/installed/${{ steps.strings.outputs.build-triplet }}/lib/*.* ${{ steps.strings.outputs.build-output-dir }}/${{ steps.strings.outputs.build-triplet }}/lib/
+      uses: "./.github/workflows/templates/xcopy"
+      with:
+        source: ${{ runner.temp }}/builds/freetype/installed/${{ steps.strings.outputs.build-triplet }}/lib/*.* 
+        destination: ${{ steps.strings.outputs.build-output-dir }}/${{ steps.strings.outputs.build-triplet }}/lib/
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.3

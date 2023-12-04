@@ -1,0 +1,30 @@
+name: 'Copy file'
+description: 'Copy file'
+
+# Were we can define the inputs that our action will accept
+inputs:
+    source: 
+        required: true
+    destination:
+        repeated: true
+    ignoreError:
+        required: false
+
+runs:
+  using: "composite"  
+  # Defining the action steps(Just one step to be simple)
+  steps:
+
+    - name: Copy Windows
+      if: runner.os == 'Windows'
+      shell: cmd
+      run: |
+        xcopy ${{ input.source }} ${{ input.destination }}
+
+    - name: 'Copy ${{ runner.os }}'
+      if: runner.os != 'Windows'
+      shell: bash
+      run: |
+        mkdir -p  ${{ input.destination }}
+        cp ${{ input.source }} ${{ input.destination }}
+    

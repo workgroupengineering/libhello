@@ -63,8 +63,8 @@ jobs:
     - name: 'Copy files'
       uses: "./.github/workflows/templates/xcopy"
       with:
-        source: ${{ runner.temp }}/builds/freetype/installed/${{ steps.strings.outputs.build-triplet }}/lib/*.* 
-        destination: ${{ steps.strings.outputs.build-output-dir }}/${{ steps.strings.outputs.build-triplet }}/lib/
+        source: ${{ runner.temp }}/builds/freetype/installed/${{ steps.strings.outputs.build-triplet }}
+        destination: ${{ steps.strings.outputs.build-output-dir }}/${{ steps.strings.outputs.build-triplet }}
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.3

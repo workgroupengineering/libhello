@@ -51,10 +51,15 @@ jobs:
         version: 2023.11.20
 
     - name: 'Install freetype Package'
-      run: vcpkg install freetype:${{ steps.strings.outputs.build-triplet }} --overlay-triplets='${{ github.workspace }}/./overlay/trypletes/' --overlay-ports='${{ github.workspace }}/./overlay/ports/'
+      run: vcpkg install freetype:${{ steps.strings.outputs.build-triplet }} \
+        --overlay-triplets='${{ github.workspace }}/./overlay/trypletes/' \
+        --overlay-ports='${{ github.workspace }}/./overlay/ports/'
 
     - name: 'Export freetype Package'
-      run: vcpkg export freetype:${{ steps.strings.outputs.build-triplet }} --zip --output-dir=${{ steps.strings.outputs.build-output-dir }}  --overlay-triplets='${{ github.workspace }}/./overlay/trypletes/' --overlay-ports='${{ github.workspace }}/./overlay/ports/'
+      run: vcpkg export freetype:${{ steps.strings.outputs.build-triplet }} \
+        --zip --output-dir=${{ steps.strings.outputs.build-output-dir }}  \ 
+        --overlay-triplets='${{ github.workspace }}/./overlay/trypletes/' \
+        --overlay-ports='${{ github.workspace }}/./overlay/ports/'
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.3

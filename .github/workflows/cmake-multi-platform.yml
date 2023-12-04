@@ -57,7 +57,7 @@ jobs:
       run: vcpkg export freetype:${{ steps.strings.outputs.build-triplet }} --raw --output-dir=/tmp/builds  --overlay-triplets='${{ github.workspace }}/./overlay/trypletes/' --overlay-ports='${{ github.workspace }}/./overlay/ports/' --output=freetype
 
     - name: 'Debug'
-      run: ls /tmp/builds/freetype/*
+      run: ls -r /tmp/builds/freetype/*
 
     - name: 'Copy files'
       shell: bash

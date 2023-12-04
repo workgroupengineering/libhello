@@ -19,12 +19,12 @@ runs:
       if: runner.os == 'Windows'
       shell: cmd
       run: |
-        xcopy ${{ input.source }} ${{ input.destination }}
+        xcopy ${{ inputs.source }} ${{ inputs.destination }}
 
     - name: 'Copy ${{ runner.os }}'
       if: runner.os != 'Windows'
       shell: bash
       run: |
         mkdir -p  ${{ input.destination }}
-        cp ${{ input.source }} ${{ input.destination }}
+        cp ${{ inputs.source }} ${{ inputs.destination }}
     

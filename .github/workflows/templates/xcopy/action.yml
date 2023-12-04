@@ -17,9 +17,9 @@ runs:
 
     - name: Copy Windows
       if: runner.os == 'Windows'
-      shell: cmd
+      shell: powershell
       run: |
-        xcopy ${{ inputs.source }} ${{ inputs.destination }}
+        cp ${{ inputs.source }} ${{ inputs.destination }}
 
     - name: 'Copy ${{ runner.os }}'
       if: runner.os != 'Windows'

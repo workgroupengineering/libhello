@@ -64,7 +64,7 @@ jobs:
       shell: bash
       run: |
         mkdir -p '${{ steps.strings.outputs.build-output-dir }}/${{ steps.strings.outputs.build-triplet }}/lib'
-        cp '/tmp/builds/freetype/installed/${{ steps.strings.outputs.build-triplet }}/lib'  '${{ steps.strings.outputs.build-output-dir }}/${{ steps.strings.outputs.build-triplet }}/lib'    
+        cp '/tmp/builds/freetype/installed/${{ steps.strings.outputs.build-triplet }}/lib/*'  '${{ steps.strings.outputs.build-output-dir }}/${{ steps.strings.outputs.build-triplet }}/lib'    
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.3

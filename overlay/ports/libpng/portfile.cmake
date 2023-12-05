@@ -1,3 +1,4 @@
+vcpkg_check_linkage(ONLY_STATIC_LIBRARY)
 # Download the apng patch
 set(LIBPNG_APNG_PATCH_PATH "")
 set(LIBPNG_APNG_OPTION "")

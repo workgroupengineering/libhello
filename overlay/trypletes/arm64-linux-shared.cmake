@@ -7,6 +7,6 @@ set(VCPKG_BUILD_TYPE release)
 
 set(PNG_EXECUTABLES OFF)
 
-if(PORT EQUAL "libpng")
+if(PORT MATCHES "libpng")
     set(VCPKG_LIBRARY_LINKAGE dynamic)
 endif()

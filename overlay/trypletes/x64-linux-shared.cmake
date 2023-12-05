@@ -6,6 +6,6 @@ set(VCPKG_CMAKE_SYSTEM_NAME Linux)
 
 set(VCPKG_FIXUP_ELF_RPATH ON)
 
-if(PORT EQUAL "libpng")
+if(PORT MATCHES "libpng")
     set(VCPKG_LIBRARY_LINKAGE dynamic)
 endif()

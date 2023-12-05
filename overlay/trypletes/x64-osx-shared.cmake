@@ -5,6 +5,6 @@ set(VCPKG_LIBRARY_LINKAGE static)
 set(VCPKG_CMAKE_SYSTEM_NAME Darwin)
 set(VCPKG_OSX_ARCHITECTURES x86_64)
 
-if(PORT EQUAL "libpng")
+if(PORT MATCHES "libpng")
     set(VCPKG_LIBRARY_LINKAGE dynamic)
 endif()

@@ -19,6 +19,7 @@ runs:
       if: runner.os == 'Windows'
       shell: powershell
       run: |
+        mkdir "${{ inputs.destination }}/lib"
         cp ${{ inputs.source }}\bin\*.* ${{ inputs.destination }}\lib
 
     - name: 'Copy ${{ runner.os }}'

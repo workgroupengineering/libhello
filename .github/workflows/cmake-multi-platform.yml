@@ -46,6 +46,14 @@ jobs:
         TRIPLET="$(echo "build-triplet=${{ matrix.ark }}-${TOS/macOS/osx}-${{ matrix.build_type }}" | tr '[:upper:]' '[:lower:]')"
         echo "$TRIPLET" >> "$GITHUB_OUTPUT"
 
+    - uses: dkershner6/switch-case-action@v1
+      id: switch-case
+      with:
+        default: "linux"
+        conditionals-with-values: |
+           ${{ matrix.os == 'windows-latest' }} => win
+           ${{ matrix.os == 'macos-latest' }} => osx
+
     - name: 'Install vcpkg'
       uses: "./.github/workflows/templates/vcpkg" #Just need to pass the path from action
       with:
@@ -64,7 +72,7 @@ jobs:
       uses: "./.github/workflows/templates/xcopy"
       with:
         source: ${{ runner.temp }}/builds/freetype/installed/${{ steps.strings.outputs.build-triplet }}
-        destination: ${{ steps.strings.outputs.build-output-dir }}/${{ steps.strings.outputs.build-triplet }}
+        destination: ${{ steps.strings.outputs.build-output-dir }}/${{ steps.switch-case.outputs.value }}-${{ matrix.ark }}
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.3

@@ -20,12 +20,12 @@ runs:
       shell: powershell
       run: |
         mkdir "${{ inputs.destination }}/lib"
-        cp ${{ inputs.source }}\bin\*.* ${{ inputs.destination }}\lib
+        cp ${{ inputs.source }}\bin\*.* ${{ inputs.destination }}\native
 
     - name: 'Copy ${{ runner.os }}'
       if: runner.os != 'Windows'
       shell: bash
       run: |
         mkdir -p  ${{ inputs.destination }}/lib
-        cp ${{ inputs.source }}/lib/*.* ${{ inputs.destination }}/lib
+        cp ${{ inputs.source }}/lib/*.* ${{ inputs.destination }}/native
     
